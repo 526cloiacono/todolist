@@ -16,6 +16,8 @@ document.getElementById("addTaskBtn").addEventListener("click", function () {
     displayTasks();
   }
 });
+
+
 //Function to display the task from task in the ul
 function displayTasks() {
   //gets unordred list in html doc
@@ -37,7 +39,7 @@ function displayTasks() {
     );
 
     //set html of li elemts with task text
-    console.log(task)
+    console.log(task);
     li.innerHTML = `${task} <button class='btn btn-dark btn-sm' onclick='removeTask(${index})'>√</button>`;
 
     //apend new task to list
@@ -54,9 +56,25 @@ function removeTask(index) {
 }
 
 //waiting to be cliked before reseting then gets the btn and does the following
-document.getElementById('clearTaskBtn').addEventListener('click', function(){
+document.getElementById("clearTaskBtn").addEventListener("click", function () {
   //sets the task array to nothing
-  tasks=[]
+  tasks = [];
   //displays the empty task
-  displayTasks()
-})
+  displayTasks();
+});
+
+
+
+taskInput.addEventListener('keydown', function (event) {
+  if (event.key === "Enter") {
+    let taskInput = document.getElementById("taskInput").value;
+
+    if (taskInput) {
+      tasks.push(taskInput);
+
+      document.getElementById("taskInput").value = "";
+
+      displayTasks();
+    }
+  }
+});
