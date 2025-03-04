@@ -1,7 +1,56 @@
-body{
-    background-color: lightblue;
-}
+body {
 
-h1{
-    color: hotpink;
-}
+    background-color: grey; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px grey;
+    padding: 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+  }
+  
+  h1 {
+    color: Blue; 
+    font-size: 100px;
+  }
+  
+  h2 {
+    color: lightblue;
+    font-size: 200px;
+    margin-top: 0;
+  }
+  
+  p {
+    color: grey; 
+    font-size: 100px;
+    margin: 20px 0;
+  }
+  
+  button {
+   
+    color: white;
+  
+    padding: 12px 25px;
+    font-size: 50px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  .score{
+    background-color: blue;
+    padding: 20px;
+   margin-top: 50px;
+    border-radius: 25px;
+margin-left: 350px;
+margin-right: 350px;
+text-align: center;
+color: white;
+font-size: 30px;
+  }
