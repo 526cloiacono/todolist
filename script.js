@@ -1,80 +1,80 @@
-// list an arary to store task
+//list an array to start task
+let tasks = []
 
-let tasks = [];
-//add event listener to add task
-document.getElementById("addTaskBtn").addEventListener("click", function () {
-  //storing text vaule from input box as a varibul
-  let taskInput = document.getElementById("taskInput").value;
+//add event listener to the add tasks 
+document.getElementById('addTaskBtn').addEventListener('click', function () {
+    //saving text value from input box as variable 
+    let taskInput = document.getElementById('taskInput').value
 
-  // giving truthy falsy faule so you cant entery empty string
-  if (taskInput) {
-    //push item to bottom of list
-    tasks.push(taskInput);
-    // resets text box
-    document.getElementById("taskInput").value = "";
-    // displays each task
-    displayTasks();
-  }
-});
+    if (taskInput) {
+        //pushes item to end of list
+        tasks.push(taskInput)
+        //clears the task bar 
+        document.getElementById('taskInput').value = ''
+        //display task
+        displayTasks()
+    }
 
+})
 
-//Function to display the task from task in the ul
+//function to display task
 function displayTasks() {
-  //gets unordred list in html doc
-  let taskList = document.getElementById("taskList");
-  //clear the excistig task list before updating it
-  taskList.innerHTML = "";
+    //getting UL from HTML
+    let taskList = document.getElementById('taskList')
+    //clear existing tasks from list 
+    taskList.innerHTML = ''
 
-  //loop through each task in array
-  tasks.forEach((task, index) => {
-    //create a new li for each task
-    let li = document.createElement("li");
+    //loop through each task in array and create a list item
+    tasks.forEach((task, index) => {
+        //create a new list element for new task
+        let li = document.createElement('li')
+        //add bootstrap classes
+        li.classList.add(
+            'list-group-item',
+            'd-flex',
+            'justify-content-between',
+            'align-item-center'
+        )
+        //inner html Li element with task text
+        li.innerHTML = `${task} <button class='btn btn-sm' onclick='removeTask(${index})'> √ </button> `
 
-    //add bootstrap classes
-    li.classList.add(
-      "list-group-item",
-      "d-flex",
-      "justify-content-between",
-      "align-items-center"
-    );
-
-    //set html of li elemts with task text
-    console.log(task);
-    li.innerHTML = `${task} <button class='btn btn-dark btn-sm' onclick='removeTask(${index})'>√</button>`;
-
-    //apend new task to list
-    taskList.appendChild(li);
-  });
+        //append new task
+        taskList.appendChild(li)
+    }
+    )
+    count = tasks.length;
+    document.getElementById("taskCount").innerHTML = "Total Tasks: " + count;
 }
 
 //function to remove task
 function removeTask(index) {
-  // remove task at the given idex from the aray
-  tasks.splice(index, 1);
-  //calling function to display
-  displayTasks();
+    //remove the task at the given index from array
+    tasks.splice(index, 1)
+    //get function to display task
+    displayTasks()
 }
+//event listener for clear all button 
+document.getElementById('clearTaskBtn').addEventListener('click', function () {
+    //tasks to nothing
+    tasks = []
+    //displays the nothing
+    displayTasks()
+})
 
-//waiting to be cliked before reseting then gets the btn and does the following
-document.getElementById("clearTaskBtn").addEventListener("click", function () {
-  //sets the task array to nothing
-  tasks = [];
-  //displays the empty task
-  displayTasks();
-});
-
-
-
+//enter key event listener 
 taskInput.addEventListener('keydown', function (event) {
-  if (event.key === "Enter") {
-    let taskInput = document.getElementById("taskInput").value;
+    //if event button clicked
+    if (event.key === 'Enter') {
 
-    if (taskInput) {
-      tasks.push(taskInput);
+        let taskInput = document.getElementById('taskInput').value
 
-      document.getElementById("taskInput").value = "";
-
-      displayTasks();
+        if (taskInput) {
+            //pushes value end of array    
+            tasks.push(taskInput)
+            //value is cleared atr button is clicked
+            document.getElementById('taskInput').value = ""
+            //update array
+            displayTasks()
+        }
     }
-  }
-});
+})
